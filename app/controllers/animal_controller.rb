@@ -7,6 +7,11 @@ class AnimalController < ApplicationController
         one_animal = Animal.find(params[:id])
         render json: one_animal
     end
+    def show_animal_sightings
+        one_animal = Animal.find(params[:id])
+        animal_sightings = one_animal.sightings.all
+        render json: animal_sightings
+    end
     def create
         new_animal = Animal.create(animal_params)
         if new_animal.valid?
